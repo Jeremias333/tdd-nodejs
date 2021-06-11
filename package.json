@@ -1,0 +1,27 @@
+{
+  "name": "tdd-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha --parallel --exit test/",
+    "test:dev": "npx mocha test/ -w",
+    "test:cov": "npx nyc --reporters=html,text npm test"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeremias333/tdd-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeremias333/tdd-nodejs/issues"
+  },
+  "homepage": "https://github.com/Jeremias333/tdd-nodejs#readme",
+  "dependencies": {
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.4"
+  }
+}
