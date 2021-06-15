@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Jeremias333/tdd-nodejs#readme",
   "dependencies": {
+    "chai": "^3.5.0",
     "lokijs": "^1.5.12",
     "mocha": "^8.4.0",
     "nyc": "^15.1.0",

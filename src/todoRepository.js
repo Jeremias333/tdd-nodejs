@@ -18,9 +18,9 @@ class TodoRepository{
 
 module.exports = TodoRepository;
 
-// const c = new TodoRepository();
+const c = new TodoRepository();
 
-// c.create({name: 'jeremias', age: 21});
-// c.create({name: 'alita', age: 15});
+c.create({name: 'jeremias', age: 21});
+c.create({name: 'alita', age: 15});
 
-// console.log('list', c.list());
+console.log('list', c.list());
