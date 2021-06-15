@@ -38,7 +38,23 @@ describe('todoRepository', () => {
             expect(result).to.be.deep.equal(expectedReturn);
             expect(todoRepository.schedule[functionName].calledOnce).to.be.ok;
         });
-        it('should call insertOne from lokijs');
+        
+        it('should call insertOne from lokijs', () => {
+            const functionName = "insertOne";
+            const expectedReturn = true;
+
+            sandBox.stub(
+                todoRepository.schedule,
+                functionName
+            ).returns(expectedReturn);
+
+            const data = {name: 'Jeremias'}
+            const result = todoRepository.create(data);
+
+            expect(result).to.be.ok;
+            expect(todoRepository.schedule[functionName].calledOnceWithExactly(data)).to.be.ok;
+
+        });
        
     });
 });
