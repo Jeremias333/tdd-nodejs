@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx mocha --parallel --exit test/",
     "test:dev": "npx mocha test/ -w",
-    "test:cov": "npx nyc --reporters=html,text npm test"
+    "test:cov": "npx nyc --reporter=html npm test"
   },
   "repository": {
     "type": "git",

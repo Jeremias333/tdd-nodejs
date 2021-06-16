@@ -91,7 +91,33 @@ describe('todoService', () => {
 
             expect(todoService.todoRepository.create.calledOnceWithExactly(expectedCallWith)).to.be.ok
         });
-        it("should save todo item with peding status");
+
+        it("should save todo item with peding status", () => {
+            const properties = {
+                text: "I must walk my dog",
+                when: new Date("2021-10-10 12:00:00 GMT-0")
+            }
+           
+            const expectedId = '000001';
+
+            const uuid = require("uuid");
+            const fakeUUID = sandBox.fake.returns(expectedId);
+            sandBox.replace(uuid, "v4", fakeUUID)
+
+            const data = new Todo(properties);
+            console.log(data);
+            const today = new Date("2021-10-02");
+            sandBox.useFakeTimers(today.getTime());
+
+            todoService.create(data);
+
+            const expectedCallWith = {
+                ...data,
+                status: "pending"
+            }
+
+            expect(todoService.todoRepository.create.calledOnceWithExactly(expectedCallWith)).to.be.ok
+        });
 
     });
 });
