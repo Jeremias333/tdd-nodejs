@@ -10,7 +10,7 @@ describe('todoService', () => {
     before(() => {
         sandBox = new createSandbox();
     });
-
+    afterEach(() => sandBox.restore());
     describe("#list", () => {
         const mockDatabase = [
             {
@@ -70,15 +70,26 @@ describe('todoService', () => {
                 text: "I must walk my dog",
                 when: new Date("2021-10-01 12:00:00 GMT-0")
             }
-            const data = new Todo(data);
+           
             const expectedId = '000001';
 
             const uuid = require("uuid");
             const fakeUUID = sandBox.fake.returns(expectedId);
-            sandBox.replace(uuid, uuid.v4.name, fakeUUID)
+            sandBox.replace(uuid, "v4", fakeUUID)
 
-            const today = new Date("2020-10-02");
+            const data = new Todo(properties);
+            console.log(data);
+            const today = new Date("2021-10-02");
+            sandBox.useFakeTimers(today.getTime());
 
+            todoService.create(data);
+
+            const expectedCallWith = {
+                ...data,
+                status: "late"
+            }
+
+            expect(todoService.todoRepository.create.calledOnceWithExactly(expectedCallWith)).to.be.ok
         });
         it("should save todo item with peding status");
 
